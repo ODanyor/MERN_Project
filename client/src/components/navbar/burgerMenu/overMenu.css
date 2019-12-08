@@ -1,0 +1,22 @@
+.overSide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100vh;
+    background-color: #ffffff;
+    border-radius: 0 20px 20px 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    
+    transform: translateX(-100%);
+    -webkit-transition: transform .3s ease-out;
+    -moz-transition: transform .3s ease-out;
+    -o-transition: transform .3s ease-out;
+    transition: transform .3s ease-out;
+}
+.overSide.show {
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.7);
+    transform: translateX(0);
+}
