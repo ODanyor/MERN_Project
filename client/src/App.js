@@ -4,7 +4,6 @@ import './App.css';
 
 //Redux
 
-
 // React Components
 import Navbar from './components/navbar/navbar.component';
 import HomePage from './components/homePage.component';
