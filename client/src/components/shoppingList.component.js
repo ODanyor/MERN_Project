@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import uuid from 'uuid'
 import './shoppingList.css'
@@ -15,49 +15,27 @@ import ModalCom from './modal.component'
 
 class ShoppingList extends React.Component {
     render() {
-        return(
+        const [number, setNumber] = useState(1)
+        return (
             <div>
-                <h1>Shopping List</h1>
-                <h3>Amount of cakes in the shop: {this.props.numOfCakes}</h3>
-                <button onClick={this.props.buyCake}>Buy a cake</button>
-                <button onClick={this.props.addCake}>Add a cake</button>
-                <hr/>
-                <h3>Amount of coffe boxes in the shop: {this.props.numOfCoffe_boxes}</h3>
-                <button onClick={this.props.buyCoffe}>Buy a coffe</button>
-                <button onClick={this.props.addCoffe}>Add a coffe</button>
+            <h2>Number of cakes - {this.props.numOfCakes} </h2>
+            <input type='text' value={number} onChange={e => setNumber(e.target.value)} />
+            <button onClick={() => this.props.buyCake(number)}>Buy X Cakes</button>
             </div>
         )
     }
 }
-// function ShoppingList(props) {
-//     return (
-//         <div>
-//             <h1>Number of cakes: {props.numOfCakes}</h1>
-//             <button onClick={props.buyCake}>Buy cake</button>
-//         </div>
-//     )
-// }
-
-// ShoppingList.propTypes = ({
-//     numOfCakes: PropTypes.object.isRequired,
-//     buyCake: PropTypes.func.isRequired
-// })
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        numOfCakes: state.cake.numOfCakes,
-        numOfCoffe_boxes: state.coffe.numOfCoffe_boxes
+        numOfCakes: state.cake.numOfCakes
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
-        buyCake: () => dispatch(buyCake()),
-        addCake: () => dispatch(addCake()),
-
-        buyCoffe: () => dispatch(buyCoffe()),
-        addCoffe: () => dispatch(addCoffe())
+        buyCake: number => dispatch(buyCake(number))
     }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)
