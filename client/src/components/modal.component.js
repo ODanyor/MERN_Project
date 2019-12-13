@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import { PropTypes } from 'prop-types'
 
 //Redux actions
-import { buyCake, addCake } from '../redux/cake/cakeActions'
-import { buyCoffe, addCoffe } from '../redux/coffe_box/coffe_boxActions'
+import { buyCake } from '../redux/cake/cakeActions'
 
 class ModalCom extends React.Component {
     render() {
@@ -30,24 +29,18 @@ class ModalCom extends React.Component {
 }
 
 ModalCom.propTypes = ({
-    numOfCakes: PropTypes.number,
-    numberOfCoffe_boxes: PropTypes.number
+    numOfCakes: PropTypes.number
 })
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        buyCake: (number) => dispatch(buyCake(number)),
-        addCake: (number) => dispatch(addCake(number)),
-
-        buyCoffe: (number) => dispatch(buyCoffe(number)),
-        addCoffe: (number) => dispatch(addCoffe(number))
+        buyCake: (number) => dispatch(buyCake(number))
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        numberOfCakes: state.cake.numOfCakes,
-        numberOfCoffe_boxes: state.coffe.numOfCoffe_boxes
+        numberOfCakes: state.cake.numOfCakes
     }
 }
 

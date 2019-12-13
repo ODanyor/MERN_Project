@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import uuid from 'uuid'
+//import { CSSTransition, TransitionGroup } from 'react-transition-group'
+//import uuid from 'uuid'
 import './shoppingList.css'
 
 //Redux
 import { connect } from 'react-redux'
-import { buyCake, addCake } from '../redux/cake/cakeActions'
-import { buyCoffe, addCoffe } from '../redux/coffe_box/coffe_boxActions'
+import { buyCake } from '../redux/cake/cakeActions'
 import { PropTypes } from 'prop-types'
 
 //Modal window
@@ -15,7 +14,7 @@ import ModalCom from './modal.component'
 
 class ShoppingList extends React.Component {
     render() {
-        const [number, setNumber] = useState(1)
+        const [number, setNumber] = useState(null)
         return (
             <div>
             <h2>Number of cakes - {this.props.numOfCakes} </h2>
