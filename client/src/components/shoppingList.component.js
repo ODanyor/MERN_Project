@@ -9,32 +9,32 @@ import { buyCake } from '../redux/cake/cakeActions'
 import { PropTypes } from 'prop-types'
 
 //Modal window
-import ModalCom from './modal.component'
 
 
 class ShoppingList extends React.Component {
     render() {
-        const [number, setNumber] = useState(null)
+        //const [number, setNumber] = useState(0)
+        console.log(this)
         return (
             <div>
-            <h2>Number of cakes - {this.props.numOfCakes} </h2>
-            <input type='text' value={number} onChange={e => setNumber(e.target.value)} />
-            <button onClick={() => this.props.buyCake(number)}>Buy X Cakes</button>
+                <h1>Shopping List page</h1>
+                <p>Number of cakes - {this.props.cake}</p>
+                {/* <h2>Number of cakes - {this.props.numOfCakes} </h2>
+                    <input type='text' value={number} onChange={e => setNumber(e.target.value)} />
+                <button onClick={() => this.props.buyCake(number)}>Buy X Cakes</button> */}
             </div>
         )
     }
 }
+
+ShoppingList.propTypes = ({
+    cake: PropTypes.number.isRequired
+})
+
 const mapStateToProps = state => {
     return {
-        numOfCakes: state.cake.numOfCakes
+        cake: state.cake.numOfCakes
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        buyCake: number => dispatch(buyCake(number))
-    }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList)
+export default connect(mapStateToProps)(ShoppingList)
