@@ -15,18 +15,30 @@ const  ShoppingList = (props) => {
       {id: uuid(), name: 'Box of water'}
     ]
   })
-   const onDelete = () => {
-    this.setState()
+  const onDelete = (id) => {
+    setState(state => ({items: state.items.filter(item => item.id !== id)}))
+  }
+  const [item, setItem] = useState('')
+  const onChange = (e) => {
+    setItem(e.target.value)
   }
   let context = (
     <div>
+      <input type='text' name='name' placeholder='Name an item' value={item} onChange={onChange} />
+      <button onClick={() => {
+        if (item) {
+          setState(state => ({
+            items: [...state.items, {id: uuid(), name: item}]
+          }))
+          setItem('')
+        }
+      }}>Add</button>
       <ul>
         {state.items.map(item => {
           return (
-            <li>
-              <div key={item.id}>
-                <button>&times;</button>
-                {item.name}</div>
+            <li key={item.id}>
+                <button onClick={() => onDelete(item.id)}>&times;</button>
+                {item.name}
             </li>
           )
         })}
