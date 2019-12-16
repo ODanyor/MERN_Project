@@ -26,6 +26,7 @@ const itemReducer = (state=initialState, action) => {
                 ...state,
                 items: state.items.filter(item => item.id !== action.payload)
             }
+        default: return state
     }
 }
 
