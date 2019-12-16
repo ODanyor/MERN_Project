@@ -1,23 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './shoppingList.css'
 //import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import uuid from 'uuid'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { getItems } from '../redux/items/itemActions'
 
 
 const  ShoppingList = (props) => {
-  const [state, setState] = useState({
-    items: [
-      {id: uuid(), name: 'Milk'},
-      {id: uuid(), name: 'Cokies'},
-      {id: uuid(), name: 'Pizza'},
-      {id: uuid(), name: 'CocaCola'},
-      {id: uuid(), name: 'Meat'},
-      {id: uuid(), name: 'Box of water'}
-    ]
-  })
-  const onDelete = (id) => {
-    setState(state => ({items: state.items.filter(item => item.id !== id)}))
-  }
+  useEffect(() => props.getItems)
+  const { items } = props.item
   const [item, setItem] = useState('')
   const onChange = (e) => {
     setItem(e.target.value)
@@ -25,19 +17,12 @@ const  ShoppingList = (props) => {
   let context = (
     <div>
       <input type='text' name='name' placeholder='Name an item' value={item} onChange={onChange} />
-      <button onClick={() => {
-        if (item) {
-          setState(state => ({
-            items: [...state.items, {id: uuid(), name: item}]
-          }))
-          setItem('')
-        }
-      }}>Add</button>
+      <button onClick={() => console.log("Add button clicked")}>Add</button>
       <ul>
-        {state.items.map(item => {
+        {items.map(item => {
           return (
             <li key={item.id}>
-                <button onClick={() => onDelete(item.id)}>&times;</button>
+                <button onClick={() => console.log("Delete button clicked")}>&times;</button>
                 {item.name}
             </li>
           )
@@ -47,5 +32,17 @@ const  ShoppingList = (props) => {
   )
   return context
 }
-
-export default ShoppingList
+ShoppingList.propTypes = {
+  item: PropTypes.state.isRequired,
+  getItems: PropTypes.func.isRequired
+}
+const mapDispatchToProps = (dispatch) => ({
+  getItems: dispatch(getItems())
+})
+const mapStateToProps = (state) => ({
+  item: state.item
+})
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps)
+  (ShoppingList)
