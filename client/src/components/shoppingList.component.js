@@ -4,7 +4,7 @@ import './shoppingList.css'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getItems, deleteItem } from '../redux/items/itemActions'
+import { getItems, addItem, deleteItem } from '../redux/items/itemActions'
 
 
 const ShoppingList = (props) => {
@@ -12,10 +12,21 @@ const ShoppingList = (props) => {
     props.getItems()
   }, [])
   const {items} = props.item
+  const [item, setItem] = useState('')
+  const onChange = (e) => {
+    setItem(e.target.value)
+  }
   return (
     <div>
       <h2 align='center'>Shooping List page</h2>
       <hr/>
+      <input type='text' placeholder='Add an item' value={item} onChange={onChange} />
+      <button onClick={() => {
+        if (item) {
+            props.addItem({id: uuid(), name: item})
+            setItem('')
+        }
+      }}>Add</button>
       <ul>
         {items.map(item => {
           return (
@@ -34,11 +45,13 @@ ShoppingList.propTypes = {
   item: PropTypes.object.isRequired,
   // Actions
   getItems: PropTypes.func.isRequired,
+  addItem: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => ({
   getItems: () => {dispatch(getItems())},
+  addItem: (item) => {dispatch(addItem(item))},
   deleteItem: (id) => {dispatch(deleteItem(id))}
 })
 
