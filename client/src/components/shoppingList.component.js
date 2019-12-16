@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './shoppingList.css'
+import styled from 'styled-components'
 //import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
@@ -8,35 +9,66 @@ import { getItems, addItem, deleteItem } from '../redux/items/itemActions'
 
 
 const ShoppingList = (props) => {
+  
   useEffect(() => {
     props.getItems()
   }, [])
+
+
   const {items} = props.item
   const [item, setItem] = useState('')
   const onChange = (e) => {
     setItem(e.target.value)
   }
+  const Ul = styled.ul`
+  li {
+    background-color: #f4abaa;
+    line-height: 2.1rem;
+    button {
+      cursor: pointer;
+      margin-left: 1.4rem;
+      margin-right: .4rem;
+      width: 1.7rem;
+      height: 1.7rem;
+      background-color: #e12b38;
+      border: 0;
+      border-radius: 5px;
+      &:hover {
+        box-shadow: 0 0 5px black;
+      }
+    }
+  }
+  `;
+  const Line = styled.div`
+  width: 100vw;
+  height: 1.7px;
+  background-color: #292930;
+  `;
   return (
     <div>
-      <h2 align='center'>Shooping List page</h2>
-      <hr/>
-      <input type='text' placeholder='Add an item' value={item} onChange={onChange} />
-      <button onClick={() => {
-        if (item) {
-            props.addItem({id: uuid(), name: item})
-            setItem('')
-        }
-      }}>Add</button>
-      <ul>
-        {items.map(item => {
-          return (
-            <li key={item.id}>
-              <button onClick={() => props.deleteItem(item.id)}>&times;</button>
-              {item.name}
-            </li>
-          )
-        })}
-      </ul>
+      <div>
+        <h2>Shooping List page</h2>
+        <div className="formIncluder">
+          <input className="addInput" type='text' placeholder='Add an item' value={item} onChange={onChange} />
+          <button className="addButton" onClick={() => {
+            if (item) {
+                props.addItem({id: uuid(), name: item})
+                setItem('')
+            }
+          }}>Add</button>
+        </div>
+        <Ul>
+          {items.map(item => {
+            return (
+              <li key={item.id}>
+                <button onClick={() => props.deleteItem(item.id)}>&times;</button>
+                {item.name}
+                <Line />
+              </li>
+            )
+          })}
+        </Ul>
+      </div>
     </div>
   )
 }

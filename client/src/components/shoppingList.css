@@ -17,3 +17,34 @@
     transition: transform 500ms ease-out;
     transform: translateX(50%);
 }
+.formIncluder {
+    display: flex;
+    align-items: center;
+}
+.addInput {
+    width: 13rem;
+    height: 1.7rem;
+    margin: 5px;
+    padding: 5px;
+    border: 0;
+    background-color: #cae7df;
+    border-radius: 5px;
+    font-size: 17px;
+    color: #cc231e;
+}.addInput:focus {
+    box-shadow: 0 0 5px black;
+}
+.addButton {
+    position: relative;
+    left: -2rem;
+    cursor: pointer;
+    font-size: 17px;
+    color: #ffffff;
+    width: 4rem;
+    height: 2.1rem;
+    border: 0;
+    border-radius: 15px;
+    background-color: #34a65f;
+}.addButton:hover {
+    box-shadow: 0 0 5px black;
+}
