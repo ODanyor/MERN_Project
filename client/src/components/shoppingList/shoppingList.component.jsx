@@ -8,12 +8,13 @@ import styled from 'styled-components'
 
 // Components
 import EditModal from './editModal.component'
+import BackSide from '../navbar/burgerMenu/backMenu.component'
 
 // Redux
 import uuid from 'uuid'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getItems, addItem, deleteItem } from '../redux/items/itemActions'
+import { getItems, addItem, deleteItem } from '../../redux/items/itemActions'
 
 
 const ShoppingList = (props) => {
@@ -27,6 +28,17 @@ const ShoppingList = (props) => {
   const [item, setItem] = useState('')
   const onChange = (e) => {
     setItem(e.target.value)
+  }
+
+  const [isShow, setIsShow] = useState(false)
+  const toggle = () => {
+    setIsShow(!isShow)
+  }
+  let backSide
+  let editForm
+  if (isShow) {
+    backSide = <BackSide hide={() => toggle()} />
+    editForm = <EditModal />
   }
 
   // Styles
@@ -65,6 +77,21 @@ const ShoppingList = (props) => {
     }
   }
   `;
+  const DeleteButton = styled.button`
+    position: relative;
+    left: -2rem;
+    cursor: pointer;
+    font-size: 17px;
+    color: #ffffff;
+    width: 4rem;
+    height: 2.1rem;
+    border: 0;
+    border-radius: 15px;
+    background-color: #34a65f;
+    &:hover {
+      box-shadow: 0 0 5px black;
+    }
+  `;
   const Line = styled.div`
   width: 100vw;
   height: 1.7px;
@@ -74,16 +101,18 @@ const ShoppingList = (props) => {
   // JSX
   return (
     <div>
+      {backSide}
+      {editForm}
       <div>
         <h2>Shooping List page</h2>
         <div className="formIncluder">
           <input className="addInput" type='text' placeholder='Add an item' value={item} onChange={onChange} />
-          <button className="addButton" onClick={() => {
+          <DeleteButton onClick={() => {
             if (item) {
                 props.addItem({id: uuid(), name: item})
                 setItem('')
             }
-          }}>Add</button>
+          }}>Add</DeleteButton>
         </div>
         <Ul>
           <h4>List of items:</h4>
@@ -92,7 +121,7 @@ const ShoppingList = (props) => {
               <li key={item.id}>
                 <button className="deleteButton" onClick={() => props.deleteItem(item.id)}>&times;</button>
                 {item.name}
-                <button className="editButton">Edit</button>
+                <button className="editButton" onClick={() => toggle()}>Edit</button>
                 <Line />
               </li>
             )
@@ -105,7 +134,7 @@ const ShoppingList = (props) => {
 
 ShoppingList.propTypes = {
   item: PropTypes.object.isRequired,
-  
+
   // Actions
   getItems: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,

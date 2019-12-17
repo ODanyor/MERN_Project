@@ -34,17 +34,30 @@
 }.addInput:focus {
     box-shadow: 0 0 5px black;
 }
-.addButton {
-    position: relative;
-    left: -2rem;
-    cursor: pointer;
-    font-size: 17px;
-    color: #ffffff;
-    width: 4rem;
-    height: 2.1rem;
-    border: 0;
-    border-radius: 15px;
-    background-color: #34a65f;
-}.addButton:hover {
-    box-shadow: 0 0 5px black;
+.editForm {
+    position: absolute;
+    width: 19rem;
+    height: 11rem;
+    background-color: #ffffff;
+    border-radius: 35px;
+    display: flex;
+    z-index: 200;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}.editInput {
+    width: 13rem;
+    height: 1.7rem;
+    padding: 15px;
+    border: 2px solid #292930;
+    border-radius: 5px;
+    font-size: 15px;
+}.editInput:focus {
+    box-shadow: 0 0 5px #292930;
+}
+.editForm {
+    display: fixed;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
 }

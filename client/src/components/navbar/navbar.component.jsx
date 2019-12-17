@@ -1,32 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './navbar.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './navbar.css'
 
 // BurgerMenu Components
-import BurgerButton from './burgerMenu/burgerButton.component';
-import OverSide from './burgerMenu/overMenu.component';
-import BackSide from './burgerMenu/backMenu.component';
+import BurgerButton from './burgerMenu/burgerButton.component'
+import OverSide from './burgerMenu/overMenu.component'
+import BackSide from './burgerMenu/backMenu.component'
 
 class Navbar extends React.Component{
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.toggle = this.toggle.bind(this);
+        this.toggle = this.toggle.bind(this)
         this.state = {
             isOpen: false
-        };
-    };
+        }
+    }
     toggle() {
         this.setState((prevState => {
             return {isOpen: !prevState.isOpen}
-        }));
-    };
+        }))
+    }
 
 
     render() {
-        let backSide;
+        let backSide
         if (this.state.isOpen) {
-            backSide = <BackSide hide={this.toggle}/>;
+            backSide = <BackSide hide={this.toggle}/>
         };
         return(
             <div className='Navbar'>
@@ -43,8 +43,8 @@ class Navbar extends React.Component{
                     </ul>
                 </div>
             </div>
-        );
-    };
-};
+        )
+    }
+}
 
-export default Navbar;
+export default Navbar

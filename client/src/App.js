@@ -11,7 +11,7 @@ import Navbar from './components/navbar/navbar.component'
 import HomePage from './components/homePage.component'
 import SignUp from './components/signUp.component'
 import SignIn from './components/signIn.component'
-import ShoppingList from './components/shoppingList.component'
+import ShoppingList from './components/shoppingList/shoppingList.component'
 
 function App() {
   return (
