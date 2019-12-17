@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react'
+
+// Styles
 import './shoppingList.css'
 import styled from 'styled-components'
+
 //import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
+// Components
+import EditModal from './editModal.component'
+
+// Redux
 import uuid from 'uuid'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -20,11 +28,15 @@ const ShoppingList = (props) => {
   const onChange = (e) => {
     setItem(e.target.value)
   }
+
+  // Styles
   const Ul = styled.ul`
   li {
-    background-color: #f4abaa;
+    background-color: #f5624d;
     line-height: 2.1rem;
-    button {
+    color: #292930;
+    letter-spacing: 1.3px;
+    .deleteButton {
       cursor: pointer;
       margin-left: 1.4rem;
       margin-right: .4rem;
@@ -33,9 +45,23 @@ const ShoppingList = (props) => {
       background-color: #e12b38;
       border: 0;
       border-radius: 5px;
+      color: #ffffff;
       &:hover {
-        box-shadow: 0 0 5px black;
+        box-shadow: 0 0 10px #ffffff;
       }
+    }
+    .editButton {
+      cursor: pointer;
+      position: relative;
+      background-color: #fcd02c;
+      width: 2rem;
+      border: 0;
+      float: right;
+      right: 1rem;
+      top: .5rem;
+      border-radius: 5px;
+      color: #292930;
+      border: 1px solid #292930;
     }
   }
   `;
@@ -44,6 +70,8 @@ const ShoppingList = (props) => {
   height: 1.7px;
   background-color: #292930;
   `;
+
+  // JSX
   return (
     <div>
       <div>
@@ -58,11 +86,13 @@ const ShoppingList = (props) => {
           }}>Add</button>
         </div>
         <Ul>
+          <h4>List of items:</h4>
           {items.map(item => {
             return (
               <li key={item.id}>
-                <button onClick={() => props.deleteItem(item.id)}>&times;</button>
+                <button className="deleteButton" onClick={() => props.deleteItem(item.id)}>&times;</button>
                 {item.name}
+                <button className="editButton">Edit</button>
                 <Line />
               </li>
             )
@@ -75,6 +105,7 @@ const ShoppingList = (props) => {
 
 ShoppingList.propTypes = {
   item: PropTypes.object.isRequired,
+  
   // Actions
   getItems: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
