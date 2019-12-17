@@ -56,8 +56,7 @@
     box-shadow: 0 0 5px #292930;
 }
 .editForm {
-    display: fixed;
-    top: 5rem;
+    top: 4rem;
     left: 50%;
     transform: translateX(-50%);
 }

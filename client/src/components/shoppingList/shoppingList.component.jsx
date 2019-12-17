@@ -109,8 +109,10 @@ const ShoppingList = (props) => {
           <input className="addInput" type='text' placeholder='Add an item' value={item} onChange={onChange} />
           <DeleteButton onClick={() => {
             if (item) {
+                if ( props.item.items.length < 10) {
                 props.addItem({id: uuid(), name: item})
                 setItem('')
+                }
             }
           }}>Add</DeleteButton>
         </div>
