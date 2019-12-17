@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import './shoppingList.css'
+
+// Redux
+import { connect } from 'react-redux'
+import { editItem } from '../../redux/items/itemActions'
+import PropTypes from 'prop-types'
 
 const EditModal = (props) => {
     const Button = styled.button`
@@ -16,12 +21,38 @@ const EditModal = (props) => {
             box-shadow: 0 0 5px #292930;
         }
     `;
+    const Ul = styled.div`
+    width: 200px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    `;
+    const [item, setItem] = useState('')
+    const onChange = (e) => {
+        setItem(e.target.value)
+    }
     return (
         <div className='editForm'>
-            <input type='text' placeholder="New item's name" className='editInput' />
-            <Button>Save changes</Button>
+            <Ul>
+                <div>name: {props.name}</div>
+            </Ul>
+            <input type='text' placeholder="New item's name" className='editInput' value={item} onChange={onChange} />
+            <Button onclick={() => console.log('Edited')}>Save changes</Button>
         </div>
     )
 }
+
+// EditModal.propTypes = {
+//     item: PropTypes.object.isRequired,
+//     editForm: PropTypes.func.isRequired
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//     editItem: () => dispatch(editItem())
+// }
+
+// const mapStateToProps = (state) => {
+//     item: state.item
+// }
 
 export default EditModal

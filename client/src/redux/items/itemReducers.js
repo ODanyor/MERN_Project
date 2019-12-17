@@ -1,4 +1,4 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM } from './itemTypes'
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, EDIT_ITEM } from './itemTypes'
 import uuid from 'uuid'
 const initialState = {
     items: [
@@ -25,6 +25,11 @@ const itemReducer = (state=initialState, action) => {
             return {
                 ...state,
                 items: state.items.filter(item => item.id !== action.payload)
+            }
+        case EDIT_ITEM:
+            return {
+                ...state,
+                items: [state.items.filter(item => item.id === action.payload.id.then(i => i.name === action.payload.name)), ...state.items]
             }
         default: return state
     }

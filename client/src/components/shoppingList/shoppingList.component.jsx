@@ -34,11 +34,16 @@ const ShoppingList = (props) => {
   const toggle = () => {
     setIsShow(!isShow)
   }
+  const [change, setChange] = useState({
+    id: '',
+    name: ''
+  })
   let backSide
   let editForm
   if (isShow) {
     backSide = <BackSide hide={() => toggle()} />
-    editForm = <EditModal />
+    editForm = <EditModal id={change.id} name={change.name}/>
+    //function editForm (id) { return (<EditModal item={id}/>) }
   }
 
   // Styles
@@ -111,7 +116,6 @@ const ShoppingList = (props) => {
             if (item) {
                 if ( props.item.items.length < 10) {
                 props.addItem({id: uuid(), name: item})
-                setItem('')
                 }
             }
           }}>Add</DeleteButton>
@@ -123,7 +127,13 @@ const ShoppingList = (props) => {
               <li key={item.id}>
                 <button className="deleteButton" onClick={() => props.deleteItem(item.id)}>&times;</button>
                 {item.name}
-                <button className="editButton" onClick={() => toggle()}>Edit</button>
+                <button className="editButton" onClick={() => {
+                  toggle()
+                  setChange({
+                    id: item.id,
+                    name: item.name
+                  })
+                }}>Edit</button>
                 <Line />
               </li>
             )
