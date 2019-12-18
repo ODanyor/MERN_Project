@@ -1,20 +1,22 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, EDIT_ITEM } from './itemTypes'
-import uuid from 'uuid'
+import { 
+    GET_ITEMS,
+    ADD_ITEM, 
+    DELETE_ITEM, 
+    EDIT_ITEM, 
+    ITEMS_LOADING } from './itemTypes'
+
+
 const initialState = {
-    items: [
-        {id: uuid(), name: 'Milk'},
-        {id: uuid(), name: 'Cokies'},
-        {id: uuid(), name: 'Pizza'},
-        {id: uuid(), name: 'CocaCola'},
-        {id: uuid(), name: 'Meat'},
-        {id: uuid(), name: 'Box of water'}
-    ]
+    items: [],
+    loading: false
 }
 const itemReducer = (state=initialState, action) => {
     switch(action.type) {
         case GET_ITEMS:
             return {
-                ...state
+                ...state,
+                items: action.payload,
+                loading: false
             }
         case ADD_ITEM:
             return {
@@ -24,19 +26,24 @@ const itemReducer = (state=initialState, action) => {
         case DELETE_ITEM:
             return {
                 ...state,
-                items: state.items.filter(item => item.id !== action.payload)
+                items: state.items.filter(item => item._id !== action.payload)
             }
         case EDIT_ITEM:
             return {
                 ...state,
                 items: state.items.map(item => {
-                    if (item.id === action.payload.id) {
+                    if (item._id === action.payload.id) {
                         return {
                             ...item, ...action.payload
                         }
                     }
                     return item
                 })
+            }
+        case ITEMS_LOADING:
+            return {
+                ...state,
+                loading: true
             }
         default: return state
     }

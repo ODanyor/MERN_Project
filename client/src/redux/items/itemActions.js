@@ -1,9 +1,20 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, EDIT_ITEM } from './itemTypes'
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, EDIT_ITEM, ITEMS_LOADING } from './itemTypes'
+import axios from 'axios'
+import { getErrors } from '../actions/errorActions'
 
-export const getItems = () => {
-    return {
-        type: GET_ITEMS
-    }
+export const getItems = () => dispatch => {
+    dispatch(itemsLoading())
+    axios.get('/api/items')
+        .then(res => 
+            dispatch({
+                type: GET_ITEMS,
+                payload: res.data
+                }
+            )
+        )
+        .catch(err =>
+            dispatch(getErrors(err.response.data, err.response.status))
+          );
 }
 export const addItem = (item) => {
     return {
@@ -24,5 +35,10 @@ export const editItem = (id, name) => {
             id: id,
             name: name
         }
+    }
+}
+export const itemsLoading = () => {
+    return {
+        type: ITEMS_LOADING
     }
 }

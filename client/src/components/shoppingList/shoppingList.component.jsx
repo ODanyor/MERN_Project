@@ -114,10 +114,8 @@ const ShoppingList = (props) => {
           <input className="addInput" type='text' placeholder='Add an item' value={item} onChange={onChange} />
           <DeleteButton onClick={() => {
             if (item) {
-                if ( props.item.items.length < 10) {
-                props.addItem({id: uuid(), name: item})
-                setItem('')
-                }
+              props.addItem({_id: uuid(), name: item})
+              setItem('')
             }
           }}>Add</DeleteButton>
         </div>
@@ -125,13 +123,13 @@ const ShoppingList = (props) => {
           <h4>List of items:</h4>
           {items.map(item => {
             return (
-              <li key={item.id}>
-                <button className="deleteButton" onClick={() => props.deleteItem(item.id)}>&times;</button>
+              <li key={item._id}>
+                <button className="deleteButton" onClick={() => props.deleteItem(item._id)}>&times;</button>
                 {item.name}
                 <button className="editButton" onClick={() => {
                   toggle()
                   setChange({
-                    id: item.id,
+                    id: item._id,
                     name: item.name
                   })
                 }}>Edit</button>
