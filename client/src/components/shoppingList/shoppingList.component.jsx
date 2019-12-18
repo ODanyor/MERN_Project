@@ -116,6 +116,7 @@ const ShoppingList = (props) => {
             if (item) {
                 if ( props.item.items.length < 10) {
                 props.addItem({id: uuid(), name: item})
+                setItem('')
                 }
             }
           }}>Add</DeleteButton>

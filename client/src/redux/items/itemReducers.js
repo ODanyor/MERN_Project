@@ -29,7 +29,20 @@ const itemReducer = (state=initialState, action) => {
         case EDIT_ITEM:
             return {
                 ...state,
-                items: [state.items.filter(item => item.id === action.payload.id.then(i => i.name === action.payload.name)), ...state.items]
+                items: state.items.map(item => {
+                    if (item.id === action.payload.id) {
+                        return {
+                            ...item, ...action.payload
+                        }
+                    }
+                    return item
+                })
+                // items: state.items.filter(item => {
+                //     if (item.id === action.payload.id) {
+                //         return item.name === action.payload.name
+                //     }
+                //     return state
+                // })
             }
         default: return state
     }

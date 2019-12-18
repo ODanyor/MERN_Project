@@ -8,19 +8,6 @@ import { editItem } from '../../redux/items/itemActions'
 import PropTypes from 'prop-types'
 
 const EditModal = (props) => {
-    const Button = styled.button`
-        cursor: pointer;
-        background-color: #fcd02c;
-        width: 9rem;
-        height: 2rem;
-        font-size: 17px;
-        letter-spacing: 1.7px;
-        border: 0;
-        border-radius: 15px;
-        &:hover {
-            box-shadow: 0 0 5px #292930;
-        }
-    `;
     const Ul = styled.div`
     width: 200px;
     display: flex;
@@ -37,22 +24,26 @@ const EditModal = (props) => {
                 <div>name: {props.name}</div>
             </Ul>
             <input type='text' placeholder="New item's name" className='editInput' value={item} onChange={onChange} />
-            <Button onclick={() => console.log('Edited')}>Save changes</Button>
+            <button className='editButtonSave' onClick={() => {
+                if (item) {
+                    props.editItem(props.id, item)
+                }
+            }}>Save changes</button>
         </div>
     )
 }
 
-// EditModal.propTypes = {
-//     item: PropTypes.object.isRequired,
-//     editForm: PropTypes.func.isRequired
-// }
+EditModal.propTypes = {
+    item: PropTypes.object.isRequired,
+    editForm: PropTypes.func
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//     editItem: () => dispatch(editItem())
-// }
+const mapDispatchToProps = (dispatch) => ({
+    editItem: (id, name) => {dispatch(editItem(id, name))}
+})
 
-// const mapStateToProps = (state) => {
-//     item: state.item
-// }
+const mapStateToProps = state => ({
+    item: state.item
+})
 
-export default EditModal
+export default connect(mapStateToProps, mapDispatchToProps)(EditModal)

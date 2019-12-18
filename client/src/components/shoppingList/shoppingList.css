@@ -60,3 +60,15 @@
     left: 50%;
     transform: translateX(-50%);
 }
+.editButtonSave {
+    cursor: pointer;
+    background-color: #fcd02c;
+    width: 9rem;
+    height: 2rem;
+    font-size: 17px;
+    letter-spacing: 1.7px;
+    border: 0;
+    border-radius: 15px;
+}.editButtonSave:hover {
+    box-shadow: 0 0 5px #292930;
+}
