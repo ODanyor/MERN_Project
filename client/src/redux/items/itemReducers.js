@@ -37,12 +37,6 @@ const itemReducer = (state=initialState, action) => {
                     }
                     return item
                 })
-                // items: state.items.filter(item => {
-                //     if (item.id === action.payload.id) {
-                //         return item.name === action.payload.name
-                //     }
-                //     return state
-                // })
             }
         default: return state
     }

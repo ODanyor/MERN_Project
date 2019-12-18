@@ -42,7 +42,7 @@ const ShoppingList = (props) => {
   let editForm
   if (isShow) {
     backSide = <BackSide hide={() => toggle()} />
-    editForm = <EditModal id={change.id} name={change.name}/>
+    editForm = <EditModal id={change.id} name={change.name} hide={() => toggle()}/>
     //function editForm (id) { return (<EditModal item={id}/>) }
   }
 

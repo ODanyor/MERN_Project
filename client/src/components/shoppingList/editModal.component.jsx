@@ -27,6 +27,7 @@ const EditModal = (props) => {
             <button className='editButtonSave' onClick={() => {
                 if (item) {
                     props.editItem(props.id, item)
+                    props.hide()
                 }
             }}>Save changes</button>
         </div>
