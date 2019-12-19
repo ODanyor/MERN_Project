@@ -16,17 +16,31 @@ export const getItems = () => dispatch => {
             dispatch(getErrors(err.response.data, err.response.status))
           );
 }
-export const addItem = (item) => {
-    return {
-        type: ADD_ITEM,
-        payload: item
-    }
+export const addItem = (item) => dispatch => {
+    dispatch(itemsLoading())
+    axios.post('/api/items', item)
+        .then(res => {
+            dispatch({
+                type: ADD_ITEM,
+                payload: res.data
+            })
+        })
+        .catch(err => {
+            dispatch(getErrors(err.response.data, err.response.status))
+        })
 }
-export const deleteItem = (id) => {
-    return {
-        type: DELETE_ITEM,
-        payload: id
-    }
+export const deleteItem = (id) => dispatch => {
+    dispatch(itemsLoading())
+    axios.delete(`/api/items/${id}`)
+        .then(res => {
+            dispatch({
+                type: DELETE_ITEM,
+                payload: id
+            })
+        })
+        .catch(err => {
+            dispatch(getErrors(err.response.data, err.response.status))
+        })
 }
 export const editItem = (id, name) => {
     return {
