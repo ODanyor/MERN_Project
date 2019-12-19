@@ -34,7 +34,7 @@ const itemReducer = (state=initialState, action) => {
                 items: state.items.map(item => {
                     if (item._id === action.payload.id) {
                         return {
-                            ...item, ...action.payload
+                            ...item, ...action.payload.item
                         }
                     }
                     return item

@@ -1,22 +1,22 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 // Items model
-const Item = require('../../models/Item');
+const Item = require('../../models/Item')
 
 // Routers
 // GET items
 router.get('/', (req, res) => {
     Item.find()
         .then(items => res.json(items))
-        .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err))
 });
 
 // GEt an item
 router.get('/:id', (req, res) => {
     Item.findById(req.params.id)
         .then(item => res.json(item))
-        .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err))
 })
 
 // POST an item
@@ -26,14 +26,26 @@ router.post('/', (req, res) => {
     });
     newItem.save()
         .then(item => res.json(item))
-        .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err))
 });
+
+// EDIT an item
+router.post('/:id/edit', (req, res) => {
+    Item.findById(req.params.id)
+        .then(item => {
+            item.name = req.body.name
+            item.save()
+                .then(() => res.json(item))
+                .catch((err) => res.status(400).json(err))
+        })
+        .catch(err => res.status(400).json(err))
+})
 
 // DELETE an item
 router.delete('/:id', (req, res) => {
     Item.findByIdAndDelete(req.params.id)
         .then(() => res.json('Item was deleted.'))
-        .catch(err => res.status(400).json(err));
+        .catch(err => res.status(400).json(err))
 });
 
-module.exports = router;
+module.exports = router

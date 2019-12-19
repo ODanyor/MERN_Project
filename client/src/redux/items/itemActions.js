@@ -42,14 +42,18 @@ export const deleteItem = (id) => dispatch => {
             dispatch(getErrors(err.response.data, err.response.status))
         })
 }
-export const editItem = (id, name) => {
-    return {
-        type: EDIT_ITEM,
-        payload: {
-            id: id,
-            name: name
-        }
-    }
+export const editItem = (id, item) => dispatch => {
+    dispatch(itemsLoading())
+    axios.post(`/api/items/${id}/edit`, item) // Here somethin went wrong...
+        .then(res => {
+            dispatch({
+                type: EDIT_ITEM,
+                payload: {
+                    id: id,
+                    item: item
+                }
+            })
+        })
 }
 export const itemsLoading = () => {
     return {

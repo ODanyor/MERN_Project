@@ -14,17 +14,19 @@ const EditModal = (props) => {
     align-items: center;
     flex-direction: column;
     `;
-    const [item, setItem] = useState('')
+    const [item, setItem] = useState({
+        name: ''
+    })
     const onChange = (e) => {
-        setItem(e.target.value)
+        setItem({name: e.target.value})
     }
     return (
         <div className='editForm'>
             <Ul>
                 <div>name: {props.name}</div>
             </Ul>
-            <input type='text' placeholder="New item's name" className='editInput' value={item} onChange={onChange} />
-            <button className='editButtonSave' onClick={() => {
+            <input type='text' placeholder="New item's name" className='editInput' value={item.name} onChange={onChange} />
+            <button type='submit' className='editButtonSave' onClick={() => {
                 if (item) {
                     props.editItem(props.id, item)
                     props.hide()
@@ -40,7 +42,7 @@ EditModal.propTypes = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    editItem: (id, name) => {dispatch(editItem(id, name))}
+    editItem: (id, item) => {dispatch(editItem(id, item))}
 })
 
 const mapStateToProps = state => ({
