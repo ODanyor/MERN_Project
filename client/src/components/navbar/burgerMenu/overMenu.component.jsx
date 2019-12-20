@@ -24,6 +24,7 @@ function OverMenu(props) {
                     <StyledLink onClick={props.click} to="/signUp"><li>Sign up</li></StyledLink>
                     <StyledLink onClick={props.click} to="/signIn"><li>Sign in</li></StyledLink>
                     <StyledLink onClick={props.click} to="/list"><li>Shopping list</li></StyledLink>
+                    <StyledLink onClick={props.click} to="/posts"><li>Posts</li></StyledLink>
                 </ul>
             </div>
         );

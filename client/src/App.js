@@ -12,6 +12,7 @@ import HomePage from './components/homePage.component'
 import SignUp from './components/signUp.component'
 import SignIn from './components/signIn.component'
 import ShoppingList from './components/shoppingList/shoppingList.component'
+import PostPage from './components/postPage/postPage.component'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route exact strict path='/signUp' component={SignUp} />
               <Route exact strict path='/signIn' component={SignIn} />
               <Route exact strict path='/list' component={ShoppingList} />
+              <Route exact strict path='/posts' component={PostPage} />
             </Switch>
           </div>
         </div>

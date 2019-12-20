@@ -40,6 +40,7 @@ class Navbar extends React.Component{
                         <Link className='StyledLink' to="/signUp"><li>Sign up</li></Link>
                         <Link className='StyledLink' to="/signIn"><li>Sign in</li></Link>
                         <Link className='StyledLink' to="/list"><li>Shopping list</li></Link>
+                        <Link className='StyledLink' to="/posts"><li>Posts</li></Link>
                     </ul>
                 </div>
             </div>
