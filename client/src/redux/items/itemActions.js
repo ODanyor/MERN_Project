@@ -44,7 +44,7 @@ export const deleteItem = (id) => dispatch => {
 }
 export const editItem = (id, item) => dispatch => {
     dispatch(itemsLoading())
-    axios.post(`/api/items/${id}/edit`, item) // Here somethin went wrong...
+    axios.post(`/api/items/${id}/edit`, item)
         .then(res => {
             dispatch({
                 type: EDIT_ITEM,
