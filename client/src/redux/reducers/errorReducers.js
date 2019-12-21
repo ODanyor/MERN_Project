@@ -1,4 +1,4 @@
-import { GET_ERRORS, CLEAR_ERRORS } from '../items/itemTypes'
+import { GET_ERRORS, CLEAR_ERRORS } from '../types'
 
 const initialState = {
     msg: {},

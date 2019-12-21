@@ -1,6 +1,6 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, EDIT_ITEM, ITEMS_LOADING } from './itemTypes'
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, EDIT_ITEM, ITEMS_LOADING } from '../types'
 import axios from 'axios'
-import { getErrors } from '../actions/errorActions'
+import { getErrors } from './errorActions'
 
 export const getItems = () => dispatch => {
     dispatch(itemsLoading())

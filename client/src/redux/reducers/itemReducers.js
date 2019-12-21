@@ -3,7 +3,7 @@ import {
     ADD_ITEM, 
     DELETE_ITEM, 
     EDIT_ITEM, 
-    ITEMS_LOADING } from './itemTypes'
+    ITEMS_LOADING } from '../types'
 
 
 const initialState = {

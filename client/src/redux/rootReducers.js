@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import itemReducer from './items/itemReducers'
-import postReducer from './posts/postReducers'
+import itemReducer from './reducers/itemReducers'
+import postReducer from './reducers/postReducers'
 import errorReducers from './reducers/errorReducers'
 
 const rootReducer = combineReducers({

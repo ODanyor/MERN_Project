@@ -14,7 +14,7 @@ import BackSide from '../navbar/burgerMenu/backMenu.component'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getItems, addItem, deleteItem } from '../../redux/items/itemActions'
+import { getItems, addItem, deleteItem } from '../../redux/actions/itemActions'
 
 
 const ShoppingList = (props) => {

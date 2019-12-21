@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getPosts } from '../../redux/posts/postActions'
+import { getPosts } from '../../redux/actions/postActions'
 
 function PostPage (props) {
     useEffect(() => {

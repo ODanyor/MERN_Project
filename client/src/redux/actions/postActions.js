@@ -1,6 +1,6 @@
-import { GET_POSTS, DELETE_POST, EDIT_POSTS, POSTS_LOADING } from './postTypes'
+import { GET_POSTS, DELETE_POST, EDIT_POSTS, POSTS_LOADING } from '../types'
 import axios from 'axios'
-import { getErrors } from '../actions/errorActions'
+import { getErrors } from './errorActions'
 
 export const getPosts = () => dispatch => {
     dispatch(postsLoading())

@@ -4,7 +4,7 @@ import './shoppingList.css'
 
 // Redux
 import { connect } from 'react-redux'
-import { editItem } from '../../redux/items/itemActions'
+import { editItem } from '../../redux/actions/itemActions'
 import PropTypes from 'prop-types'
 
 const EditModal = (props) => {

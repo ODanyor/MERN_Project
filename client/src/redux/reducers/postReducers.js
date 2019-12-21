@@ -1,4 +1,4 @@
-import { GET_POSTS, DELETE_POST, EDIT_POSTS, POSTS_LOADING } from './postTypes'
+import { GET_POSTS, DELETE_POST, EDIT_POSTS, POSTS_LOADING } from '../types'
 
 const initialState = {
     posts: [],
