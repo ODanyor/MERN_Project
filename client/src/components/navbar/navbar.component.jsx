@@ -36,6 +36,12 @@ class Navbar extends React.Component{
                     {backSide}
                     <div className='logo'><Link className='StyledLink' to='/'>Logo</Link></div>
                     <div className='Spacer' />
+                    <Link className='Cart' to="/cart">
+                        <div className='box'>
+                            <div className='counter'>0</div>
+                        </div>
+                        <div className='cartLogo'></div>
+                    </Link>
                     <ul className='list'>
                         <Link className='StyledLink' to="/signUp"><li>Sign up</li></Link>
                         <Link className='StyledLink' to="/signIn"><li>Sign in</li></Link>

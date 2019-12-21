@@ -56,3 +56,34 @@
 .StyledLink:hover {
     color: #cc231e;
 }
+.Cart {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}.Cart .cartLogo {
+    position: absolute;
+    background-image: url('../../static/cart.png');
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    z-index: 5;
+}.Cart .box {
+    position: absolute;
+}.Cart .box .counter {
+    position: relative;
+    top: -5px;
+    left: 1.1rem;
+    background-color: rgba(255, 251, 0, 0.914);
+    box-shadow: 0 0 5px #ffffff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #292930;
+}
