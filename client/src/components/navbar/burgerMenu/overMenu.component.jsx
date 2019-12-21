@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import './overMenu.css';
+import '../navbar.css';
 
 function OverMenu(props) {
         const StyledLink = styled(Link)`

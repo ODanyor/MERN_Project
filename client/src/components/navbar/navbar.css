@@ -61,14 +61,22 @@
     width: 30px;
     height: 30px;
     display: inline-block;
-}.Cart .cartLogo {
+}@media screen and (max-width: 840px) {
+    .Cart {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.Cart .cartLogo {
     position: absolute;
     background-image: url('../../static/cart.png');
     background-size: cover;
     width: 25px;
     height: 25px;
     z-index: 5;
-}.Cart .box {
+}
+.Cart .box {
     position: absolute;
 }.Cart .box .counter {
     position: relative;
@@ -86,4 +94,28 @@
     font-size: 11px;
     font-weight: 800;
     color: #292930;
+}
+
+/* @BURGER_MENU styles */
+.overSide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100vh;
+    background-color: #ffffff;
+    border-radius: 0 20px 20px 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    
+    transform: translateX(-100%);
+    -webkit-transition: transform .3s ease-out;
+    -moz-transition: transform .3s ease-out;
+    -o-transition: transform .3s ease-out;
+    transition: transform .3s ease-out;
+}
+.overSide.show {
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.7);
+    transform: translateX(0);
 }
