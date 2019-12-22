@@ -2,10 +2,6 @@ import React from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css'
 
-// //Redux
-import { Provider } from 'react-redux'
-import store from './redux/store'
-
 // React Components
 import Navbar from './components/navbar/navbar.component'
 import HomePage from './components/homePage.component'
@@ -17,23 +13,21 @@ import Cart from './components/cart/cart.component'
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <div className='switch'>
-            <Switch>
-              <Route exact strict path='/' component={HomePage} />
-              <Route exact strict path='/signUp' component={SignUp} />
-              <Route exact strict path='/signIn' component={SignIn} />
-              <Route exact strict path='/list' component={ShoppingList} />
-              <Route exact strict path='/posts' component={PostPage} />
-              <Route exact strict path='/cart' component={Cart} />
-            </Switch>
-          </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className='switch'>
+          <Switch>
+            <Route exact strict path='/' component={HomePage} />
+            <Route exact strict path='/signUp' component={SignUp} />
+            <Route exact strict path='/signIn' component={SignIn} />
+            <Route exact strict path='/list' component={ShoppingList} />
+            <Route exact strict path='/posts' component={PostPage} />
+            <Route exact strict path='/cart' component={Cart} />
+          </Switch>
         </div>
-      </Router>
-    </Provider>
+      </div>
+    </Router>
   );
 }
 

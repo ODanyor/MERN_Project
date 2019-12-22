@@ -29,20 +29,64 @@ function PostPage (props) {
             color: #292930;
         }
     `;
+    const Container = styled.div`
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        h1 {
+            letter-spacing: 7px;
+            font-weight: 400;
+        }
+    `;
+    const SubContainer = styled.div`
+        margin: 1px;
+        border: 2px solid #292930;
+        border-radius: 5px;
+        width: 800px;
+        &:hover {
+            background-color: #cae7df;
+        }
+        @media screen and (max-width: 840px) {
+            & {
+                width: 80%;
+            }
+        }
+        span {
+            font-size: 11px;
+            letter-spacing: -.5px;
+            font-weight: 700;
+        }
+    `;
+    const Description = styled.div`
+        width: 700px;
+        margin: 1rem;
+        @media screen and (max-width: 840px) {
+            & {
+                width: 80%;
+            }
+        }
+    `;
+    const Title = styled.div`
+        font-size: 21px;
+        font-weight: 900;
+    `;
     return (
         <div>
+            <Container>
             <h1>Post Page</h1>
             {posts.map(post => (
-                <div key={post._id}>
-                    <h3>{post.title}</h3>
-                    <p>{post.description}</p>
-                    <span>{post.date}</span>
+                <SubContainer key={post._id}>
+                    <Title>{post.title}</Title>
+                    <Description>{post.description}</Description>
+                    <span>Published: {post.date}</span>
                     <Button onClick={() => {
                         props.addToCart(post)
                     }}>&#43;</Button>
                     <hr/>
-                </div>
+                </SubContainer>
             ))}
+            </Container>
         </div>
     )
 }

@@ -5,6 +5,7 @@
     background-color: #f5624d;
     color: #ffffff;
     z-index: 100;
+    box-shadow: 0 3px 4px #292930;
 }
 .Navbar-sub {
     width: 100%;
