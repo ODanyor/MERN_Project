@@ -64,6 +64,7 @@
 }@media screen and (max-width: 840px) {
     .Cart {
         position: absolute;
+        top: .7rem;
         left: 50%;
         transform: translateX(-50%);
     }

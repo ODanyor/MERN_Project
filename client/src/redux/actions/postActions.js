@@ -1,4 +1,4 @@
-import { GET_POSTS, DELETE_POST, EDIT_POSTS, POSTS_LOADING } from '../types'
+import { GET_POSTS, DELETE_POST, EDIT_POSTS, POSTS_LOADING, ADD_TO_CART, REMOVE_FROM_CART } from '../types'
 import axios from 'axios'
 import { getErrors } from './errorActions'
 
@@ -12,8 +12,20 @@ export const getPosts = () => dispatch => {
             })
         })
         .catch(err =>
-            dispatch(getErrors(err.response.data, err.response.status))
+            dispatch(getErrors(err.res.data, err.res.status))
         );
+}
+export const addToCart = (post) => {
+    return {
+        type: ADD_TO_CART,
+        payload: post
+    }
+}
+export const removeFromCart = (id) => {
+    return {
+        type: REMOVE_FROM_CART,
+        payload: id
+    }
 }
 export const postsLoading = () => {
     return {

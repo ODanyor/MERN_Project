@@ -1,11 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './navbar.css'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 // BurgerMenu Components
 import BurgerButton from './burgerMenu/burgerButton.component'
 import OverSide from './burgerMenu/overMenu.component'
 import BackSide from './burgerMenu/backMenu.component'
+
+// @REDUX actions
+import { getPosts } from '../../redux/actions/postActions'
 
 class Navbar extends React.Component{
     constructor(props) {
@@ -38,7 +43,7 @@ class Navbar extends React.Component{
                     <div className='Spacer' />
                     <Link className='Cart' to="/cart">
                         <div className='box'>
-                            <div className='counter'>0</div>
+                            <div className='counter'>{this.props.counter}</div>
                         </div>
                         <div className='cartLogo'></div>
                     </Link>
@@ -54,4 +59,14 @@ class Navbar extends React.Component{
     }
 }
 
-export default Navbar
+Navbar.propTypes = {
+    counter: PropTypes.number.isRequired
+}
+
+const mapStateToProps = state => {
+    return {
+        counter: state.post.counter
+    }
+}
+
+export default connect(mapStateToProps)(Navbar)
