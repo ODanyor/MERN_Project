@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 // REDUX actions
-import { getPosts, removeFromCart } from '../../redux/actions/postActions'
+import { removeFromCart } from '../../redux/actions/postActions'
 
 function Cart (props) {
     const Container = styled.div`
@@ -53,9 +53,32 @@ function Cart (props) {
             font-weight: 900;
         }
     `;
-    useEffect(() => {
-        props.getPosts()
-    }, [])
+    const DeleteButton = styled.div`
+        cursor: pointer;
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        bottom: 0;
+        * {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            border-radius: 5px;
+        }
+        .stick_1 {
+            width: 1.7rem;
+            height: 3px;
+            transform: rotate(45deg);
+            background-color: #292930;
+        }
+        .stick_2 {
+            width: 1.7rem;
+            height: 3px;
+            transform: rotate(-45deg);
+            background-color: #292930;
+        }
+    `;
     const { cartPosts } = props.post
     return (
         <Container>
@@ -64,6 +87,12 @@ function Cart (props) {
                 {cartPosts.map(post => (
                     <Box key={post._id}>
                         <h4>{post.title}</h4>
+                        <DeleteButton onClick={() => {
+                            props.removeFromCart(post._id)
+                        }}>
+                            <div className="stick_1"></div>
+                            <div className='stick_2'></div>
+                        </DeleteButton>
                     </Box>
                 ))}
             </SubContainer>
@@ -72,13 +101,13 @@ function Cart (props) {
 }
 
 Cart.propTypes = {
-    getPosts: PropTypes.func.isRequired,
-    cartPosts: PropTypes.object
+    cartPosts: PropTypes.object,
+    removeFromCart: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getPosts: () => dispatch(getPosts())
+        removeFromCart: (id) => dispatch(removeFromCart(id))
     }
 }
 
