@@ -13,7 +13,7 @@ function BackMenu(props) {
     `;
     return(
         <div>
-        <BackSide onClick={props.hide}/>
+            <BackSide onClick={props.hide}/>
         </div>
     );
 };
