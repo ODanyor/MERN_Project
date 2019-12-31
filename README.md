@@ -4,13 +4,9 @@ This is a little todolist project wich includes such kind of used tool as React,
 
 ## Getting Started
 
-'''html
-
 <pre>git clone https://github.com/ODanyor/MERN_Project.git</pre>
 <pre>npm install</pre>
 <pre>npm run dev</pre>
-
-'''
 
 ## Built With
 
