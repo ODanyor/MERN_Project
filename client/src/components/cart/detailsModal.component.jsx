@@ -14,6 +14,11 @@ function DetailsModal (props) {
         width: 400px;
         background-color: black;
         border-radius: 5px;
+        @media screen and (max-width: 840px) {
+            & {
+                width: 90vw;
+            }
+        }
     `;
     const DetailContent = styled.div`
         margin: 5px;

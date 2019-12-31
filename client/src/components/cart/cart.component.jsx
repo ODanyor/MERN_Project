@@ -28,7 +28,7 @@ function Cart (props) {
         width: 800px;
         display: grid;
         grid-gap: .5rem;
-        grid-template-columns: repeat(auto-fill, 150px);
+        grid-template-columns: repeat(auto-fill, 130px);
         @media screen and (max-width: 840px) {
             & {
                 width: 95vw;
@@ -46,11 +46,16 @@ function Cart (props) {
     const Box = styled.div`
         position: relative;
         left: 50%;
-        margin: .5rem;
         transform: translateX(-50%);
+        margin: .5rem;
         width: 100px;
         height: 100px;
         background-color: #cae7df;
+        @media screen and (max-width: 350px) {
+            & {
+                width: 80vw;
+            }
+        }
         h4 {
             margin: 5px;
             letter-spacing: 4px;
@@ -113,7 +118,7 @@ function Cart (props) {
         }
         &:hover {
             * {
-                background-color: #ffffff;
+                background-color: #cc231e;
             }
         }
     `;
