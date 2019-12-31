@@ -22,6 +22,6 @@ This is a little todolist project wich includes such kind of used tool as React,
 
 ## Screenshots
 
-![](/readme/mern.png | width=250)
-![](/readme/mern2.png/250/445)
-![](/readme/mern3.png/250/445)
+![](/readme/mern.png){:height="445px" width="250px"}
+![](/readme/mern2.png){:height="445px" width="250px"}
+![](/readme/mern3.png){:height="445px" width="250px"}
