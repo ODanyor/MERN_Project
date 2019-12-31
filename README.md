@@ -1,6 +1,6 @@
 # The MERN Stack project
 
-This is a little todolist project wich includes such kind of used tool as React, Redux, NodeJs(express), MongoDb.
+This is a little todolist project which includes such kind of tool as React, Redux, NodeJs(express), MongoDb.
 
 ## Getting Started
 
