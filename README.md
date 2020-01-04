@@ -4,8 +4,6 @@ This is a little todolist project which includes such kind of tool as React, Red
 
 ## Getting Started
 
-<pre>git clone https://github.com/ODanyor/MERN_Project.git</pre>
-<pre>npm install</pre>
 <pre>npm run dev</pre>
 
 ## Built With
